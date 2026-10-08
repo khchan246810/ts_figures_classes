@@ -24,11 +24,13 @@ export class Triangle implements Figure {
     private c: number,
   ) {
     if (a <= 0 || b <= 0 || c <= 0) {
-      throw new Error('Sides must be positive');
+      throw new Error(
+        `Sides must be greater than 0, got: a=${a}, b=${b}, c=${c}`,
+      );
     }
 
     if (a + b <= c || a + c <= b || b + c <= a) {
-      throw new Error('Invalid triangle');
+      throw new Error(`Invalid triangle: a=${a}, b=${b}, c=${c}`);
     }
 
     this.color = color;
@@ -57,7 +59,7 @@ export class Circle implements Figure {
     private radius: number,
   ) {
     if (radius <= 0) {
-      throw new Error('Radius must be positive');
+      throw new Error(`Radius must be greater than 0, got: ${radius}`);
     }
 
     this.color = color;
@@ -79,7 +81,9 @@ export class Rectangle implements Figure {
     private height: number,
   ) {
     if (width <= 0 || height <= 0) {
-      throw new Error('Sides must be positive');
+      throw new Error(
+        `Width and height must be greater than 0, got: width=${width}, height=${height}`,
+      );
     }
 
     this.color = color;
